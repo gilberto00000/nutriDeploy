@@ -1,0 +1,22 @@
+.card h2 {
+    margin-top: 0;
+}
+
+.card form.card {
+    padding: 12px;
+    margin-top: 12px;
+}
+
+.card form.card label {
+    margin-bottom: 6px;
+}
+
+.card form.card input {
+    margin-top: 0;
+}
+
+td.actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}

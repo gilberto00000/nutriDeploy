@@ -1,0 +1,60 @@
+.card {
+    max-width: 520px;
+    margin: 28px auto;
+    padding: 22px;
+}
+
+.card h2 {
+    margin: 0 0 14px 0;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+}
+
+form p {
+    margin: 10px 0;
+}
+
+form p label {
+    margin-bottom: 6px;
+}
+
+form p input {
+    margin-top: 0;
+}
+
+form .errorlist {
+    list-style: none;
+    padding-left: 0;
+    margin: 8px 0 12px;
+}
+
+form .errorlist li {
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    background: rgba(239, 68, 68, 0.08);
+    color: #991b1b;
+    padding: 10px 12px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.login-signup {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.login-signup a {
+    font-weight: 600;
+    color: #15803d;
+    text-decoration: none;
+}
+
+.login-signup a:hover {
+    text-decoration: underline;
+}

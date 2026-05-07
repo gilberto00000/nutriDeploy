@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+
+    <h2>Histórico de Registros</h2>
+
+    {% if logs %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Peso</th>
+                    <th>Observações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log.date }}</td>
+                    <td>{{ log.weight }} kg</td>
+                    <td>{{ log.notes }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhum registro encontrado.</p>
+    {% endif %}
+
+    <a href="{% url 'dashboard_paciente' %}" class="btn">Voltar</a>
+
+</div>
+{% endblock %}

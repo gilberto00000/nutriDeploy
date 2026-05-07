@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Inicio | NutriFoco{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/contas/inicio.css' %}">{% endblock %}
+{% block topbar_nav %}{% endblock %}
+{% block content %}
+<section class="card inicio-card">
+    <h2>Sistema NutriFoco</h2>
+    <p>Plataforma para nutricionistas e clientes com planos alimentares e agendamentos.</p>
+    <div class="actions">
+        <a class="btn" href="{% url 'login' %}">Entrar</a>
+        <a class="btn btn-outline" href="{% url 'signup_nutritionist' %}">Cadastrar nutricionista</a>
+        <a class="btn btn-outline" href="{% url 'signup_patient' %}">Cadastrar cliente</a>
+    </div>
+</section>
+{% endblock %}

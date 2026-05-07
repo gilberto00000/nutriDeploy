@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cadastro | NutriFoco{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/contas/cadastro.css' %}">{% endblock %}
+{% block topbar_nav %}{% endblock %}
+{% block content %}
+<section class="card">
+    <h2>{{ title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Cadastrar</button>
+    </form>
+</section>
+{% endblock %}

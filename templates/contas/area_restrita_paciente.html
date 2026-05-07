@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard">
+
+    <!-- Cabeçalho -->
+    <div class="dashboard-header">
+        <h2>Olá, {{ user.first_name|default:user.username }}</h2>
+        <p>Bem-vindo ao seu painel</p>
+    </div>
+
+    <!-- Cards -->
+    <div class="dashboard-cards">
+
+        <div class="card">
+            <h3>Meu Plano</h3>
+            <p>Visualize seu plano alimentar atual</p>
+            <a href="{% url 'dashboard_paciente' %}" class="btn">Acessar</a>
+        </div>
+
+        <div class="card">
+            <h3>Histórico</h3>
+            <p>Consulte seus registros anteriores</p>
+            <a href="{% url 'daily_log_list' %}" class="btn">Ver histórico</a>
+        </div>
+
+        <div class="card">
+            <h3>Novo Registro</h3>
+            <p>Adicione um novo registro diário</p>
+            <a href="{% url 'daily_log_create' %}" class="btn">Adicionar</a>
+        </div>
+
+    </div>
+
+    <!-- Resumo -->
+    <div class="dashboard-section">
+        <h3>Resumo</h3>
+
+        <div class="info-box">
+            <p><strong>Planos ativos:</strong> {{ plans|length }}</p>
+            <p><strong>Registros recentes:</strong> {{ logs|length }}</p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

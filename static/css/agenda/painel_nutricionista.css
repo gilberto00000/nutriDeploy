@@ -1,0 +1,12 @@
+.card h2,
+.card h3 {
+    margin-top: 0;
+}
+
+.card .actions {
+    margin-top: 10px;
+}
+
+table td {
+    vertical-align: middle;
+}

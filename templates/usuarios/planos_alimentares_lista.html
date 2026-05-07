@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/usuarios/planos_alimentares_lista.css' %}">{% endblock %}
+{% block content %}
+<section class="card">
+    <h2>Planos Alimentares</h2>
+    <div class="actions">
+        <a class="btn" href="{% url 'nutrition_plan_create' %}">Novo plano</a>
+    </div>
+    <form method="get" class="card">
+        <label>Buscar cliente</label>
+        <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Nome do cliente">
+    </form>
+    <table>
+        <tr>
+            <th>Cliente</th><th>Inicio</th><th>Fim</th><th>Status</th><th>Acoes</th>
+        </tr>
+        {% for plan in plans %}
+        <tr>
+            <td>{{ plan.patient.user.first_name|default:plan.patient.user.username }}</td>
+            <td>{{ plan.start_date }}</td>
+            <td>{{ plan.end_date }}</td>
+            <td>{% if plan.active %}Ativo{% else %}Inativo{% endif %}</td>
+            <td class="actions">
+                <a class="btn btn-outline" href="{% url 'nutrition_plan_update' plan.pk %}">Editar</a>
+                <a class="btn btn-outline" href="{% url 'nutrition_plan_delete' plan.pk %}">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">Nenhum plano encontrado.</td></tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

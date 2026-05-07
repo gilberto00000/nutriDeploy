@@ -1,0 +1,16 @@
+.card {
+    max-width: 660px;
+    margin: 28px auto;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+form p {
+    margin: 10px 0;
+}
+
+button[type="submit"] {
+    margin-top: 10px;
+}

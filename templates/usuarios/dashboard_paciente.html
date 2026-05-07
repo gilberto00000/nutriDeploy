@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="card">
+    <h2>Meu Painel</h2>
+
+    <div class="actions">
+        <a class="btn" href="{% url 'novo_registro' %}">Registrar refeição</a>
+        <a class="btn btn-outline" href="{% url 'lista_registros' %}">Ver histórico</a>
+    </div>
+</section>
+
+<section class="card">
+    <h3>Meu plano alimentar</h3>
+
+    {% for plan in plans %}
+        <div class="card">
+            <strong>Início:</strong> {{ plan.start_date }} <br>
+            <strong>Fim:</strong> {{ plan.end_date }} <br>
+            <p>{{ plan.plan_text }}</p>
+        </div>
+    {% empty %}
+        <p>Você ainda não possui plano alimentar.</p>
+    {% endfor %}
+</section>
+
+<section class="card">
+    <h3>Últimos registros</h3>
+
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Refeição</th>
+            <th>Seguiu?</th>
+        </tr>
+
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.date }}</td>
+            <td>{{ log.meal.name }}</td>
+            <td>{% if log.followed %}Sim{% else %}Não{% endif %}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3">Sem registros.</td></tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

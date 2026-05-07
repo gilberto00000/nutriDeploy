@@ -1,0 +1,20 @@
+.card {
+    max-width: 760px;
+    margin: 28px auto;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+form p {
+    margin: 10px 0;
+}
+
+textarea {
+    min-height: 130px;
+}
+
+button[type="submit"] {
+    margin-top: 10px;
+}
