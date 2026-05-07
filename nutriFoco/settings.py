@@ -21,6 +21,7 @@ SECRET_KEY = 'django-insecure-3aap0r-1y&u^ne*aru#1*a$f2b#2ydc07($%#r(+)j7-@0oye_
 DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = [
+    "https://nutrideploy.onrender.com",
     "https://nutrifoco.fly.dev",
     "http://127.0.0.1:8000",
     "http://localhost:8000",
