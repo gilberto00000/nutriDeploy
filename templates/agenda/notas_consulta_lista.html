@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/agenda/notas_consulta_lista.css' %}">{% endblock %}
+{% block content %}
+<section class="card">
+    <h2>Notas de consulta</h2>
+    <a class="btn" href="{% url 'consultation_note_create' %}">Nova nota</a>
+    <table>
+        <tr><th>Cliente</th><th>Data/Hora</th><th>Status</th><th>Acoes</th></tr>
+        {% for note in notes %}
+        <tr>
+            <td>{{ note.patient.user.first_name|default:note.patient.user.username }}</td>
+            <td>{{ note.note_datetime }}</td>
+            <td>{{ note.get_status_display }}</td>
+            <td class="actions">
+                <a class="btn btn-outline" href="{% url 'consultation_note_update' note.pk %}">Editar</a>
+                <a class="btn btn-outline" href="{% url 'consultation_note_delete' note.pk %}">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Sem notas salvas.</td></tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

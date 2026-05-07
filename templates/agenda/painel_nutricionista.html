@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}NutriFoco{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/agenda/painel_nutricionista.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="card">
+    <h2>Painel do Nutricionista</h2>
+
+    <div class="actions">
+        <a class="btn" href="{% url 'availability_create' %}">Novo horário</a>
+        <a class="btn btn-outline" href="{% url 'nutrition_plan_create' %}">Novo plano alimentar</a>
+        <a class="btn btn-outline" href="{% url 'consultation_note_create' %}">Nova nota</a>
+    </div>
+</section>
+
+<section class="card">
+    <h3>Atendimentos de hoje</h3>
+
+    <table>
+        <tr>
+            <th>Horário</th>
+            <th>Paciente</th>
+            <th>Status</th>
+        </tr>
+
+        {% for appt in appointments_today %}
+        <tr>
+            <td>{{ appt.hora|time:"H:i" }}</td>
+            <td>{{ appt.patient.user.first_name|default:appt.patient.user.username }}</td>
+            <td>Agendado</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Nenhum atendimento hoje.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+<section class="card">
+    <h3>Próximos atendimentos</h3>
+
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Paciente</th>
+        </tr>
+
+        {% for appt in next_appointments %}
+        <tr>
+            <td>{{ appt.data|date:"d/m/Y" }}</td>
+            <td>{{ appt.hora|time:"H:i" }}</td>
+            <td>{{ appt.patient.user.first_name|default:appt.patient.user.username }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Sem atendimentos futuros.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+<section class="card">
+    <h3>Horários livres</h3>
+
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Duração</th>
+        </tr>
+
+        {% for slot in next_slots %}
+        <tr>
+            <td>{{ slot.date|date:"d/m/Y" }}</td>
+            <td>{{ slot.start_time|time:"H:i" }}</td>
+            <td>{{ slot.duration_minutes }} min</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Sem horários livres cadastrados.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

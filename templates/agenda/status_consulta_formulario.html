@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/agenda/status_consulta_formulario.css' %}">{% endblock %}
+{% block content %}
+<section class="card">
+    <h2>Atualizar status da consulta</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar</button>
+    </form>
+</section>
+{% endblock %}

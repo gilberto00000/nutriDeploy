@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/shared/confirmar_exclusao.css' %}">{% endblock %}
+{% block content %}
+<section class="card">
+    <h2>Confirmar exclusao</h2>
+    <p>Tem certeza que deseja excluir este item?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, excluir</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/agenda/consultas_lista_nutricionista.css' %}">{% endblock %}
+{% block content %}
+<section class="card">
+    <h2>Consultas marcadas</h2>
+    <table>
+        <tr><th>Cliente</th><th>Data/Hora</th><th>Status</th><th>Acoes</th></tr>
+        {% for item in appointments %}
+        <tr>
+            <td>{{ item.patient.user.first_name|default:item.patient.user.username }}</td>
+            <td>{{ item.datetime }}</td>
+            <td>{{ item.get_status_display }}</td>
+            <td><a class="btn btn-outline" href="{% url 'appointment_status_update' item.pk %}">Atualizar</a></td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Nenhuma consulta.</td></tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}
